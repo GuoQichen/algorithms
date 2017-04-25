@@ -1,0 +1,23 @@
+{
+  "name": "algorithms",
+  "version": "1.0.0",
+  "description": "Computer science in JavaScript",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GuoQichen/algorithms.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GuoQichen/algorithms/issues"
+  },
+  "homepage": "https://github.com/GuoQichen/algorithms#readme",
+  "dependencies": {
+    "mocha": "^3.3.0"
+  }
+}
