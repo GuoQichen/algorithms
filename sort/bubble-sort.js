@@ -1,3 +1,8 @@
+/**
+ * author acky.guo
+ * 17/4/25
+ */
+
 function swap(arr, i, j) {
 	const temp = arr[i]
 	arr[i] = arr[j]

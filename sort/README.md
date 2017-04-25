@@ -37,5 +37,6 @@
 		`len - i - 1`，如果数组有5个数，其实只需要比较4次就能把5个数都比较了
 
 ## 参考
-[排序算法](http://javascript.ruanyifeng.com/library/sorting.html)
-[Computer science in JavaScript: Bubble sort](https://www.nczonline.net/blog/2009/05/26/computer-science-in-javascript-bubble-sort/)
+
+1. [排序算法](http://javascript.ruanyifeng.com/library/sorting.html)
+2. [Computer science in JavaScript: Bubble sort](https://www.nczonline.net/blog/2009/05/26/computer-science-in-javascript-bubble-sort/)
