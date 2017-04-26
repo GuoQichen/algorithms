@@ -36,6 +36,8 @@
 
 		`len - i - 1`，如果数组有5个数，其实只需要比较4次就能把5个数都比较了
 
+		`if(arr[j] > arr[j+1]) swap(arr, j, j+1)`中的`arr[j] > arr[j+1]`，因为排序是升序，所以表示的是如果前一个数比后一个数大，就调整位置
+
 ## selection sort
 1. selectionSort用来选择排序
 
