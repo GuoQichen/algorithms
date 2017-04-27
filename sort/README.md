@@ -71,7 +71,6 @@
 ## insertion sort
 1. insertion用来插入排序
 
-
 	```
 	function insertionSort(arr) {
 		const len = arr.length
@@ -104,6 +103,51 @@
 
 		`arr[j+1] = value`表示把要排序的值插入到正确的位置，`value`是在外部循环中每一次要排序的值，因为在查找插入位置的过程中每一位都会后移，`arr[i]`会被`arr[j]`覆盖，所以`arr[i]`就需要先保存起来，这边值得注意的是为什么是`arr[++j]`而不是`arr[j]`，因为`j--`，例如查找插入位置时一直找到第一位，那么内部循环后`j`最后的值为-1而不是0，所以需要`++j`，即已经找到了插入位置，但是循环最后`j--`，所以需要加回来
 
+## merge sort
+1. merge函数，用来把两个排序好的数组合并成一个
+
+	```
+	function merge(left, right) {
+		const result = []
+		let i = 0
+		let j = 0
+		while(i < left.length && j < right.length) {
+			result.push(left[i] < right[j] ? left[i++] : right[j++])
+		}
+		return result.concat(left.slice(i)).concat(right.slice(j))
+	}	
+	```
+	`i < left.length && j < right.length`表示，如果两个数组中有一个已经合并完了，就不再继续合并，而是把没合并完的数组直接和结果concat
+
+	`result.concat(left.slice(i)).concat(right.slice(j))`表示，还有数组没合并完，把没合并的数组项拼接在result的后面
+
+	`left.slice(i)`表示，把剩下的数组项slice出来，用于concat在结果后面
+
+	`result.push(left[i] < right[j] ? left[i++] : right[j++])`表示，每次把已经排序好的两个数组的第一项来比较，小的那个push进结果，然后`i++`
+
+	`left[i++]`表示，后置`++`表示先计算表达式的值，然后再改变变量的值，相当于先`left[i]`然后`i++`
+2. mergeSort函数
+
+	```
+	function mergeSort(arr) {
+		const len = arr.length
+		if(len < 2) return arr
+		const middle = Math.floor(len/2)
+		const left = arr.slice(0, middle)
+		const right = arr.slice(middle)
+		arr.splice(0, len, ...merge(mergeSort(left), mergeSort(right)))
+		return arr
+	}	
+	```
+	`if(len < 2) return arr`表示，如果数组只有一项就直接返回，因为mergeSort是递归调用，所以如果表示数组的拆分粒度到一项
+
+	`arr.slice(0, middle)`表示，使用middle把数组分成两部分
+	
+	`merge(mergeSort(left), mergeSort(right))`表示，在没有达到拆分粒度的时候继续拆分，达到拆分粒度的时候不断去merge成一个数组，最后先完成left数组的合并，然后再完成right数组的合并
+
+	`arr.splice(0, len)`表示，把输入的arr数组清空，为了实现`in-place sort`
+
+	`...merge(mergeSort(left), mergeSort(right))`表示，把最后的结果填充进清空的arr数组，实现`in-place sort`
 
 ## 参考
 
