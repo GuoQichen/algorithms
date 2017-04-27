@@ -110,3 +110,6 @@
 1. [排序算法](http://javascript.ruanyifeng.com/library/sorting.html)
 2. [Computer science in JavaScript: Bubble sort](https://www.nczonline.net/blog/2009/05/26/computer-science-in-javascript-bubble-sort/)
 3. [Computer science in JavaScript: Selection sort](https://www.nczonline.net/blog/2009/09/08/computer-science-in-javascript-selection-sort/)
+4. [Computer science in JavaScript: Insertion sort](https://www.nczonline.net/blog/2012/09/17/computer-science-in-javascript-insertion-sort/)
+5. [Computer science in JavaScript: Merge sort](https://www.nczonline.net/blog/2012/10/02/computer-science-and-javascript-merge-sort/)
+6. [Computer science in JavaScript: Quicksort](https://www.nczonline.net/blog/2012/11/27/computer-science-in-javascript-quicksort/)

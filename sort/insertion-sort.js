@@ -1,3 +1,7 @@
+/**
+ * @author acky.guo
+ * @date 17/4/26
+ */
 
 function insertionSort(arr) {
 	const len = arr.length

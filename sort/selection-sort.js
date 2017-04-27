@@ -1,6 +1,6 @@
 /**
- * author acky.guo
- * 17/4/25
+ * @author acky.guo
+ * @date 17/4/25
  */
 
 const swap = require('./swap.js')
