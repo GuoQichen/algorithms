@@ -1,7 +1,5 @@
 module.exports = function swap(arr, i, j) {
-	const len = arr.length
-	if(i > len) i = len - 1
-	if(j > len) j = len - 1
+	if(!arr[i] || !arr[j]) throw new Error(`index out of range, can't find match item`)
 	const temp = arr[i]
 	arr[i] = arr[j]
 	arr[j] = temp
