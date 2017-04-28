@@ -5,6 +5,7 @@ const bubbleSort = require('../sort/bubble-sort')
 const selectionSort = require('../sort/selection-sort')
 const insertionSort = require('../sort/insertion-sort')
 const { mergeSort, merge } = require('../sort/merge-sort')
+const { quickSort } = require('../sort/quick-sort')
 
 describe('sort algorithms', function() {
 	describe('utils', function() {
@@ -31,20 +32,22 @@ describe('sort algorithms', function() {
 
 
 	describe('sort function', function() {
-		const testCase = [3, 2, 1, 5, 4]
+		let testCase
+		beforeEach('reset testCase',function() {
+		 	testCase = [3, 2, 1, 5, 4]
+		})		
 		const result = [1, 2, 3, 4, 5]
 		const suits = [
-			{name: 'bubble-sort', testCase: [...testCase], fn: bubbleSort },
-			{name: 'selection-sort', testCase: [...testCase], fn: selectionSort },
-			{name: 'insertion-sort', testCase: [...testCase], fn: insertionSort },
-			{name: 'merge-sort', testCase: [...testCase], fn: mergeSort },		
+			{name: 'bubble-sort', fn: bubbleSort },
+			{name: 'selection-sort', fn: selectionSort },
+			{name: 'insertion-sort', fn: insertionSort },
+			{name: 'merge-sort', fn: mergeSort },
+			{name: 'quick-sort', fn: quickSort },
 		]
 
-		suits.forEach(({ name, testCase, fn }) => {
-			describe(`${name}`, function() {
-				it(`sort array into ascending order with ${name}`, function() {
-					assert.deepEqual(fn(testCase), result)
-				})
+		suits.forEach(({ name, fn }) => {
+			it(`sort array into ascending order with ${name}`, function() {
+				assert.deepEqual(fn(testCase), result)
 			})
 		})
 	})
