@@ -36,7 +36,6 @@ describe('sort algorithms', function() {
 		beforeEach('reset testCase',function() {
 		 	testCase = [3, 2, 1, 5, 4]
 		})		
-		const result = [1, 2, 3, 4, 5]
 		const suits = [
 			{name: 'bubble-sort', fn: bubbleSort },
 			{name: 'selection-sort', fn: selectionSort },
@@ -47,7 +46,7 @@ describe('sort algorithms', function() {
 
 		suits.forEach(({ name, fn }) => {
 			it(`sort array into ascending order with ${name}`, function() {
-				assert.deepEqual(fn(testCase), result)
+				assert.deepEqual(fn(testCase), [1, 2, 3, 4, 5])
 			})
 		})
 	})
