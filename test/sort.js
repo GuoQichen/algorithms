@@ -16,10 +16,11 @@ describe('sort algorithms', function() {
 				assert.deepEqual(testCase, [3,2,1])
 			})
 
-			it('index great then array.length should be lastIndex', function() {
+			it('array index out of range', function() {
 				const testCase = [1, 2, 3]
-				swap(testCase, 4, 4)
-				assert.deepEqual(testCase, [1,2,3])
+				assert.throws(() => {
+					swap(testCase, 4, 4)
+				}, /index out of range/)
 			})
 		})
 
