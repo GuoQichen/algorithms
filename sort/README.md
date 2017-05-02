@@ -149,6 +149,50 @@
 
 	`...merge(mergeSort(left), mergeSort(right))`表示，把最后的结果填充进清空的arr数组，实现`in-place sort`
 
+## quick sort
+1. partition函数
+
+	```
+	function partition(arr, left, right) {
+		const pivot = arr[Math.floor((left + right)/2)]
+		while(left <= right) {
+			while(arr[left] < pivot) {
+				left++
+			}
+			while(arr[right] > pivot) {
+				right--
+			}
+			if(left <= right) {
+				swap(arr, left, right)
+				left++
+				right--
+			}
+		}
+		return left
+	}	
+	```
+	`const pivot = arr[Math.floor((left + right)/2)]`表示，选择中间的元素作为支点
+
+	`while(left <= right) { //... }`表示，分区循环，循环完成后，数组被分为两部分，小于支点的值和大于支点的值，循环结束的标志是左边指针大于右边指针，即所有元素都比较过了
+
+	`while(arr[left] < pivot) { left++ }`表示，左边指针成最左边开始寻找大于等于支点的值，右边同理
+
+	`if(left <= right) { //... }`表示，只有在左边指针小于等于右边指针的时候，才swap两个元素的位置, 里面的`left++`和`right++`可以避免多一次循环，因为swap之后，`arr[left]`的值一定是小于`pivot`的，所以直接`left++`避免多一次的`while(arr[left] < pivot) { left++ }`，右边同理
+	
+	```
+	function quickSortInPlace(arr, left = 0, right = arr.length - 1) {
+		let index
+		if(arr.length < 2) return arr
+		index = partition(arr, left, right)
+		if(left < index - 1) quickSortInPlace(arr, left, index - 1)
+		if(right > index) quickSortInPlace(arr, index, right)
+		return arr
+	}	
+	```
+	`if(arr.length < 2) return arr`表示，如果数组项只有一个或者为空，直接返回数组
+
+	`index = partition(arr, left, right)`表示，第一次分区，把整个数组分成两部分，接下去分别对分区后的左右两部分递归调用sort函数
+
 ## 参考
 
 1. [排序算法](http://javascript.ruanyifeng.com/library/sorting.html)
