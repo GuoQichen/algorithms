@@ -1,7 +1,7 @@
 const assert = require('assert')
 const b = require('../binary-search-tree')
 
-describe('binary-search-tree functional', function() {
+describe('binary-search-tree function', function() {
 	beforeEach('reset binary-search-tree root node to null', function() {
 		b._root = null
 	})
@@ -10,38 +10,43 @@ describe('binary-search-tree functional', function() {
 		b.add(1)
 		assert(b.contains(1))
 	})
-	it('#b.add()', function() {
-		assert(b._root === null)
-		b.add(1)
-		assert.deepEqual(b._root, {
-			value: 1,
-			left: null,
-			right: null
+	describe('#b.add()', function() {
+		it('add one value', function() {
+			assert(b._root === null)
+			b.add(1)
+			assert.deepEqual(b._root, {
+				value: 1,
+				left: null,
+				right: null
+			})
+		})
+		it('add multiple value', function() {
+			assert(b._root === null)
+			b.add([2, 3])
+			assert(b.contains(2) && b.contains(3))
 		})
 	})
-	it('#b.size()', function() {
-		assert.throws(() => {
-			b.size()
-		}, /root element is null/)
-		b.add(1)
-		assert.equal(b.size(), 1)
-		b.add(2)
-		b.add(3)
-		assert.equal(b.size(), 3)
+	describe('#b.size()', function() {
+		it('should throw error if root element is null', function() {
+			assert.throws(() => {
+				b.size()
+			}, /root element is null/)
+		})
+		it('size() return amount of value', function() {
+			b.add(1)
+			assert.equal(b.size(), 1)
+			b.add([2, 3])
+			assert.equal(b.size(), 3)
+		})
+		
 	})
 	it('#b.toArray()', function() {
-		b.add(1)
-		b.add(2)
-		b.add(3)
-		const arr = b.toArray()
-		assert.deepEqual(arr, [1, 2, 3])
+		b.add([1, 2, 3])
+		assert.deepEqual(b.toArray(), [1, 2, 3])
 	})
 	it('#b.toString()', function() {
-		b.add(1)
-		b.add(2)
-		b.add(3)
-		const str = b.toString()
-		assert(str === '1,2,3')
+		b.add([1, 2, 3])
+		assert(b.toString() === '1,2,3')
 	})
 	it('#b.remove()')
 })

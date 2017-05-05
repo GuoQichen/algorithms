@@ -3,12 +3,15 @@
  * @date 17/5/3
  */
 
+
 class BinarySearchTree {
 	constructor() {
 		this._root = null
 	}
 
 	add(value) {
+		// allow add multiple value once
+		Array.isArray(value) && value.forEach(item => this.add(item))
 		const node = {
 			value,
 			left: null,
@@ -39,7 +42,7 @@ class BinarySearchTree {
 	}
 
 	contains(value) {
-		const current = this._root
+		let current = this._root
 		let found = false
 		while(current) {
 			if(value < current.value) { 
