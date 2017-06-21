@@ -45,30 +45,71 @@ function quickSortOutPlace(arr) {
 	return quickSortOutPlace(left).concat(pivot, quickSortOutPlace(right))
 }
 
+/**
+ * partition是quick-sort in-place的核心逻辑，
+ * 使用左右两个指针来不断和支点的值比较，如果在左边遇到大于支点的值，
+ * 右边遇到比支点小的值，就原地交换两个值，最终返回左边指针的位置
+ */
+
+/**
+ * partion接收的参数，arr表示要排序的数组，left表示左边指针开始的位置，
+ * right表示右边指针开始的位置，因为是原地排序，所以是通过指针的形式
+ */
+
 // in-place
 function partition(arr, left, right) {
+	/**
+	 * 因为不是原地排序，所以需要指定指针开始的位置，
+	 * 然后取中点得到支点
+	 */
 	const pivot = arr[Math.floor((left + right)/2)]
+	/**
+	 * 外部循环目的是遍历数组的所有元素
+	 */
 	while(left <= right) {
+		/**
+		 * 从左边指针开始，如果指针所指的值比支点的值小，
+		 * 指针就指向下一个数，直到遇到大于等于支点值的值
+		 */
 		while(arr[left] < pivot) {
 			left++
 		}
+		/**
+		 * 功能和上一个循环一样，但是是从右边开始，
+		 * 直到遇到小于等于支点的值
+		 */
 		while(arr[right] > pivot) {
 			right--
 		}
+		/**
+		 * 在上面两个循环之后，如果此时左边指针的index小于等于右边指针的index，
+		 * 就交换左右指针所指向的值，
+		 * 然后指针移向下一个值
+		 */
 		if(left <= right) {
 			swap(arr, left, right)
 			left++
 			right--
 		}
 	}
+	/**
+	 * 最后返回左边指针的index
+	 */
 	return left
 }
 function quickSortInPlace(arr, left = 0, right = arr.length - 1) {
 	let index
 	if(arr.length < 2) return arr
+	/**
+	 * 递归逻辑是这样的，
+	 * 先执行分区，然后根据返回的index来判断是否对剩下的部分继续执行分区
+	 */
 	index = partition(arr, left, right)
 	if(left < index - 1) quickSortInPlace(arr, left, index - 1)
 	if(right > index) quickSortInPlace(arr, index, right)
+	/**
+	 * 最后返回原来的数组
+	 */
 	return arr
 }
 
