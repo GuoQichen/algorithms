@@ -137,6 +137,9 @@ class BinarySearchTree {
 			} else {
 				switch (childrenCount) {
 					case 0:
+						/**
+						 * 判断current是左节点还是右节点
+						 */
 						if (current.value < parent.value) {
 							parent.left = null
 						} else {
