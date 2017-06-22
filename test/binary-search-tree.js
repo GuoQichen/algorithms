@@ -55,87 +55,100 @@ describe('binary-search-tree function', function () {
 			 * 			8
 			 */
 		})
-		it('remove root element with two children', function () {
-			assert(b.size(), 5)
-			b.remove(10)
-			assert(b.size(), 4)
-			assert.deepEqual(b._root, {
-				value: 9,
-				left: {
-					value: 7,
-					left: {
-						value: 5,
-						left: null,
-						right: null
-					},
-					right: {
-						value: 8,
-						left: null,
-						right: null
-					}
-				},
-				right: {
-					value: 15,
-					left: null,
-					right: null
-				}
+		describe('remove root element', function () {
+			it('remove root element with no child', function () {
+				b._root = null
+				assert.strictEqual(b.size(), 0)
+				b.add(10) // 10 as root element
+				assert.deepEqual(b.toArray(), [10])
+				b.remove(10)
+				assert.strictEqual(b.size(), 0)
+				assert.deepEqual(b.toArray(), [])
 			})
-		})
-		it('remove normal element with two children and repalcemenet is first child', function () {
-			assert(b.size(), 5)
-			b.remove(7)
-			assert(b.size(), 4)
-			assert.deepEqual(b._root, {
-				value: 10,
-				left: {
-					value: 5,
-					left: null,
-					right: {
-						value: 9,
+			it('remove root element with one chile', function () {
+				b._root = null
+				assert.strictEqual(b.size(), 0) // can's use equal(==), because 0 will be turn to falsy
+				b.add([10, 3]) // set binary-search-tree just two element, root element is 10, this._root.left === 3
+				assert(b.size(), 2)
+				assert.deepEqual(b.toArray(), [3, 10])
+				b.remove(10) // remove root element 
+				assert.deepEqual(b.toArray(), [3])
+			})
+			it('remove root element with two children', function () {
+				assert(b.size(), 5)
+				b.remove(10)
+				assert(b.size(), 4)
+				assert.deepEqual(b._root, {
+					value: 9,
+					left: {
+						value: 7,
 						left: {
-							value: 8,
+							value: 5,
 							left: null,
 							right: null
 						},
+						right: {
+							value: 8,
+							left: null,
+							right: null
+						}
+					},
+					right: {
+						value: 15,
+						left: null,
 						right: null
 					}
-				},
-				right: {
-					value: 15,
-					left: null,
-					right: null
-				}
+				})
 			})
 		})
-		it('remove normal element with two children and replacement isn\'t first child', function () {
-			b.add([3, 6]) // just for test replacement isn't first child
-			assert(b.size(), 7)
-			b.remove(7)
-			assert.deepEqual(b.toArray(), [3, 5, 6, 8, 9, 10, 15])
-		})
-		it('remove leaf node', function () {
-			b.remove(5)
-			assert(b.size(), 5)
-			assert.deepEqual(b.toArray(), [7, 8, 9, 10, 15])
-		})
-		it('remove node with one child', function () {
-			b.remove(9)
-			assert(b.size(), 5)
-			assert.deepEqual(b.toArray(), [5, 7, 8, 10, 15])
-		})
-		it('remove node with no child', function () {
-			b.remove(15)
-			assert(b.size(), 5)
-			assert.deepEqual(b.toArray(), [5, 7, 8, 9, 10])
-		})
-		it('remove root element with one chile', function () {
-			b._root = null
-			assert.strictEqual(b.size(), 0) // can's use equal(==), because 0 will be turn to falsy
-			b.add([10, 3]) // set binary-search-tree just two element, root element is 10, this._root.left === 3
-			assert(b.size(), 2)
-			assert.deepEqual(b.toArray(), [3, 10])
-			b.remove(10) // remove root element 
-			assert.deepEqual(b.toArray(), [3])
+		describe('remove node', function () {
+			it('remove node with two children and repalcemenet is first child', function () {
+				assert(b.size(), 5)
+				b.remove(7)
+				assert(b.size(), 4)
+				assert.deepEqual(b._root, {
+					value: 10,
+					left: {
+						value: 5,
+						left: null,
+						right: {
+							value: 9,
+							left: {
+								value: 8,
+								left: null,
+								right: null
+							},
+							right: null
+						}
+					},
+					right: {
+						value: 15,
+						left: null,
+						right: null
+					}
+				})
+			})
+			it('remove node with two children and replacement isn\'t first child', function () {
+				b.add([3, 6]) // just for test replacement isn't first child
+				assert(b.size(), 7)
+				b.remove(7)
+				assert.deepEqual(b.toArray(), [3, 5, 6, 8, 9, 10, 15])
+			})
+			it('remove leaf node', function () {
+				b.remove(5)
+				assert(b.size(), 5)
+				assert.deepEqual(b.toArray(), [7, 8, 9, 10, 15])
+			})
+			it('remove node with one child', function () {
+				b.remove(9)
+				assert(b.size(), 5)
+				assert.deepEqual(b.toArray(), [5, 7, 8, 10, 15])
+			})
+			it('remove node with no child', function () {
+				b.remove(15)
+				assert(b.size(), 5)
+				assert.deepEqual(b.toArray(), [5, 7, 8, 9, 10])
+			})
 		})
 	})
 })
