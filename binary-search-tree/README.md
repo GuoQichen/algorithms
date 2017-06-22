@@ -73,3 +73,7 @@ while(current) {
 
 ## _traverse()
 这个方法在内部使用，用来遍历binary-search-tree的每一个节点，`#size()`，`#toArray()`的内部就是使用这个方法来实现
+
+## Reference
+[Computer science in JavaScript: Binary search tree, Part 1](https://www.nczonline.net/blog/2009/06/09/computer-science-in-javascript-binary-search-tree-part-1/)
+[Computer science in JavaScript: Binary search tree, Part 2](https://www.nczonline.net/blog/2009/06/16/computer-science-in-javascript-binary-search-tree-part-2/)
