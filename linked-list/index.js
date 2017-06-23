@@ -9,6 +9,32 @@ class LinkedList {
         this._length = 0
     }
 
+    _find(index) {
+        let i = index
+        let current
+        let previous
+        if (index < 0 || index > this._length - 1) return null
+        current = this._head
+        while (i-- > 0) {
+            previous = current
+            current = current.next
+        }
+        return {
+            previous,
+            current
+        }
+    }
+
+    _traversal(handle) {
+        let current = this._head
+        if (this._length === 0) return 
+        const call = (node) => {
+            typeof handle === 'function' && handle.call(this, node.data)
+            if (node.next) call(node.next)
+        }
+        call(current)
+    }
+
     add(value) {
         const node = {
             data: value,
@@ -26,22 +52,6 @@ class LinkedList {
             current.next = node
         }
         this._length++
-    }
-
-    _find(index) {
-        let i = index
-        let current
-        let previous
-        if (index < 0 || index > this._length - 1) return null
-        current = this._head
-        while (i-- > 0) {
-            previous = current
-            current = current.next
-        }
-        return {
-            previous,
-            current
-        }
     }
 
     items(index) {
@@ -75,6 +85,18 @@ class LinkedList {
 
     size() {
         return this._length
+    }
+
+    toArray() {
+        const arr = []
+        this._traversal((data) => {
+            arr.push(data)
+        })
+        return arr
+    }
+
+    toString() {
+        return this.toArray().toString()
     }
 }
 
