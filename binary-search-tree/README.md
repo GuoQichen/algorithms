@@ -76,4 +76,5 @@ while(current) {
 
 ## Reference
 [Computer science in JavaScript: Binary search tree, Part 1](https://www.nczonline.net/blog/2009/06/09/computer-science-in-javascript-binary-search-tree-part-1/)
+
 [Computer science in JavaScript: Binary search tree, Part 2](https://www.nczonline.net/blog/2009/06/16/computer-science-in-javascript-binary-search-tree-part-2/)
