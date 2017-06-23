@@ -25,16 +25,6 @@ class LinkedList {
         }
     }
 
-    _traversal(handle) {
-        let current = this._head
-        if (this._length === 0) return 
-        const call = (node) => {
-            typeof handle === 'function' && handle.call(this, node.data)
-            if (node.next) call(node.next)
-        }
-        call(current)
-    }
-
     add(value) {
         const node = {
             data: value,
@@ -89,9 +79,11 @@ class LinkedList {
 
     toArray() {
         const arr = []
-        this._traversal((data) => {
-            arr.push(data)
-        })
+        let current = this._head
+        while (current !== null) {
+            arr.push(current.data)
+            current = current.next
+        }
         return arr
     }
 

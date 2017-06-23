@@ -46,4 +46,24 @@ describe.only('linked-list function', function () {
             assert(l.items(1), 'three')
         })
     })
+
+    it('#size()', function () {
+        assert.strictEqual(l.size(), 0)
+        l.add('hello')
+        l.add('world')
+        assert(l.size(), 2)
+    })
+
+    it('#toArray', function () {
+        l.add('one')
+        l.add('two')
+        l.add('three')
+        assert.deepEqual(l.toArray(), ['one', 'two', 'three'])
+    })
+
+    it('#toString', function () {
+        l.add('one')
+        l.add('two')
+        assert(l.toString(), 'one,two')
+    })
 })
