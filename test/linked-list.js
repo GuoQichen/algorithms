@@ -1,7 +1,7 @@
 const assert = require('assert')
 const l = require('../linked-list')
 
-describe.only('linked-list function', function () {
+describe('linked-list function', function () {
     beforeEach('reset linked-list', function () {
         l._head = null
         l._length = 0
