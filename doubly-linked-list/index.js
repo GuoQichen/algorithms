@@ -3,7 +3,7 @@
  * @date 17/6/23
  */
 
-export class DoublyLinkedList {
+class DoublyLinkedList {
     constructor() {
         this._length = 0
         this._head = null
@@ -68,7 +68,7 @@ export class DoublyLinkedList {
                     }
                     break
                 }
-                case this._lenght - 1: {
+                case this._length - 1: {
                     const replacement = current.prev
                     replacement.next = null
                     this._tail = replacement
@@ -94,7 +94,7 @@ export class DoublyLinkedList {
         let current = this._head
         while (current !== null) {
             arr.push(current.data)
-            current.current.next
+            current = current.next
         }
         return arr
     }
@@ -103,3 +103,5 @@ export class DoublyLinkedList {
         return this.toArray().toString()
     }
 }
+
+module.exports = new DoublyLinkedList()

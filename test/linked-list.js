@@ -2,33 +2,34 @@ const assert = require('assert')
 const l = require('../linked-list')
 
 describe('linked-list function', function () {
+    const populateList = () => {
+        l.add('one')
+        l.add('two')
+        l.add('three')
+    }
+    
     beforeEach('reset linked-list', function () {
         l._head = null
         l._length = 0
     })
 
     it('#add()', function () {
-        assert.strictEqual(l._length, 0)
-        l.add(1)
-        assert(l._length, 1)
+        assert.strictEqual(l.size(), 0)
+        populateList()
+        assert(l.size(), 3)
     })
 
     it('#items()', function () {
-        l.add(1)
-        l.add(2)
-        l.add(3)
-        assert(l.items(0), 1) // index start from 0
-        assert(l.items(1), 2) 
-        assert(l.items(2), 3)
+        populateList()
+        assert(l.items(0), 'one') // index start from 0
+        assert(l.items(2), 'three')
         assert.strictEqual(l.items(3), null)
         assert.strictEqual(l.items(-1), null)
     })
     
     describe('#remove()', function () {
         beforeEach('add node', function () {
-            l.add('one')
-            l.add('two')
-            l.add('three')
+            populateList()
         })
         it('remove head node', function () {
             assert(l.size(), 3)
@@ -49,21 +50,17 @@ describe('linked-list function', function () {
 
     it('#size()', function () {
         assert.strictEqual(l.size(), 0)
-        l.add('hello')
-        l.add('world')
-        assert(l.size(), 2)
+        populateList()
+        assert(l.size(), 3)
     })
 
     it('#toArray', function () {
-        l.add('one')
-        l.add('two')
-        l.add('three')
+        populateList()
         assert.deepEqual(l.toArray(), ['one', 'two', 'three'])
     })
 
     it('#toString', function () {
-        l.add('one')
-        l.add('two')
-        assert(l.toString(), 'one,two')
+        populateList()
+        assert(l.toString(), 'one,two,three')
     })
 })
