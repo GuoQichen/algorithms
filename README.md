@@ -16,3 +16,6 @@ This folder implement this binary-search-tree data structures, you can use `#add
 
 ## linked-list
 This folder implement linked-list with javascript, you can get the instance use `new LinkedList()`, then add new node to list use `#add(value)`, and you can get the item from index use `#items(index)`, and remove node use `#remove(index)`, there are some common funciton like `#size()`, `#toArray()`, `#toString()`
+
+## double-linked-list
+This folder implement double-linked-list with javascript, the api of double-linked-list just like linked-list
